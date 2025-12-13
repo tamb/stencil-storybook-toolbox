@@ -1,0 +1,65 @@
+/**
+ * Storybook 10 Implementation
+ *
+ * This module provides Storybook 10-specific exports for the Stencil integration.
+ * The actual implementation logic is shared in the core module to avoid duplication.
+ *
+ * Architecture:
+ * - This file is a thin wrapper that imports shared logic from ../core
+ * - Storybook 9 and 10 have identical functionality, so they share the same core
+ * - If Storybook 11+ requires different behavior, we can add version-specific logic here
+ */
+
+import type { StorybookConfig } from '@storybook/html-vite';
+import type { UseStencilOptions, ViteFinalConfig } from '../types';
+import { createViteFinalWrapper } from '../core';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+/**
+ * Wrapper function for Storybook 10's viteFinal configuration.
+ * Applies Stencil-optimized defaults while allowing full customization.
+ *
+ * This function delegates to the shared core implementation, ensuring
+ * consistency across Storybook versions.
+ *
+ * @param viteFinal - Optional viteFinal config (object or function)
+ * @param options - Optional configuration options
+ * @returns A function that can be used as viteFinal in Storybook config
+ *
+ * @example
+ * ```typescript
+ * import { useStencilVite } from 'storybook-addon-stenciljs/v10';
+ *
+ * export default {
+ *   viteFinal: useStencilVite(),
+ * };
+ * ```
+ */
+export function useStencilVite(viteFinal?: ViteFinalConfig, options?: UseStencilOptions): StorybookConfig['viteFinal'] {
+  return createViteFinalWrapper(viteFinal, options);
+}
+
+/**
+ * Returns the Stencil addon configuration for Storybook 10
+ *
+ * @returns Addon configuration (preset path)
+ *
+ * @example
+ * ```typescript
+ * import { useStencilAddon } from 'storybook-addon-stenciljs/v10';
+ *
+ * export default {
+ *   addons: [
+ *     useStencilAddon(),
+ *   ],
+ * };
+ * ```
+ */
+export function useStencilAddon(): string {
+  // Return the preset path that Storybook can load
+  // Use ESM path resolution since this is an ESM module
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  return join(__dirname, '../addon/preset.js');
+}

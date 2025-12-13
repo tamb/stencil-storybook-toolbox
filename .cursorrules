@@ -1,0 +1,22 @@
+# Cursor Rules
+
+## Constitution Directory
+
+**IMPORTANT**: Always read and follow the instructions in the `constitution` directory before making changes or implementing features.
+
+The `constitution` directory contains project-specific guidelines, requirements, and instructions that must be followed. These instructions take precedence over general coding practices when they conflict.
+
+### How to Use Constitution Files
+
+1. **Before starting any task**: Read all relevant files in the `constitution` directory
+2. **When implementing features**: Check if there are specific requirements or patterns documented in the constitution
+3. **When making decisions**: Prioritize the guidelines in the constitution directory over general best practices
+4. **If instructions conflict**: Follow the constitution directory instructions
+
+### Constitution Files Location
+
+- Root level: `/constitution/` - Contains project-wide guidelines
+- Package level: `/toolbox/constitution/` - Contains package-specific guidelines
+
+Always check both locations for relevant instructions before proceeding with any task.
+

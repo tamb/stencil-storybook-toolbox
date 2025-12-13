@@ -1,0 +1,85 @@
+:host {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.counter-display {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  min-width: 120px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.count-value {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #667eea;
+  display: block;
+}
+
+.counter-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.counter-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+  min-width: 80px;
+}
+
+.counter-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.counter-button:active {
+  transform: translateY(0);
+}
+
+.counter-button.increment {
+  background: #10b981;
+}
+
+.counter-button.increment:hover {
+  background: #059669;
+}
+
+.counter-button.decrement {
+  background: #ef4444;
+}
+
+.counter-button.decrement:hover {
+  background: #dc2626;
+}
+
+.counter-button.reset {
+  background: #6b7280;
+}
+
+.counter-button.reset:hover {
+  background: #4b5563;
+}
