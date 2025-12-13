@@ -3,3 +3,5 @@
 - add a locally packaged version of the library inside `/stencil-storybook`
 - add npm scripts to run demo1 and manually test the storybook integration
 - optional -- write playwright tests to test the storybook integration.
+- fix build
+- get all tests passing
