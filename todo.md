@@ -1,0 +1,5 @@
+- init a stencil v4 project called `demo1`
+- add storybook to demo1
+- add a locally packaged version of the library inside `/stencil-storybook`
+- add npm scripts to run demo1 and manually test the storybook integration
+- optional -- write playwright tests to test the storybook integration.
