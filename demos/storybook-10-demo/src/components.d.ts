@@ -6,6 +6,30 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface ButtonComponent {
+        /**
+          * Whether the button is disabled
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The button label text
+          * @default 'Click me'
+         */
+        "label": string;
+        /**
+          * The button size
+          * @default 'medium'
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The button variant style
+          * @default 'primary'
+         */
+        "variant": 'primary' | 'secondary' | 'danger' | 'success';
+    }
+    interface CounterComponent {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -21,7 +45,34 @@ export namespace Components {
         "middle": string;
     }
 }
+export interface ButtonComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLButtonComponentElement;
+}
 declare global {
+    interface HTMLButtonComponentElementEventMap {
+        "buttonClick": void;
+    }
+    interface HTMLButtonComponentElement extends Components.ButtonComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLButtonComponentElementEventMap>(type: K, listener: (this: HTMLButtonComponentElement, ev: ButtonComponentCustomEvent<HTMLButtonComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLButtonComponentElementEventMap>(type: K, listener: (this: HTMLButtonComponentElement, ev: ButtonComponentCustomEvent<HTMLButtonComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLButtonComponentElement: {
+        prototype: HTMLButtonComponentElement;
+        new (): HTMLButtonComponentElement;
+    };
+    interface HTMLCounterComponentElement extends Components.CounterComponent, HTMLStencilElement {
+    }
+    var HTMLCounterComponentElement: {
+        prototype: HTMLCounterComponentElement;
+        new (): HTMLCounterComponentElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +80,40 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "button-component": HTMLButtonComponentElement;
+        "counter-component": HTMLCounterComponentElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface ButtonComponent {
+        /**
+          * Whether the button is disabled
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The button label text
+          * @default 'Click me'
+         */
+        "label"?: string;
+        /**
+          * Event emitted when the button is clicked
+         */
+        "onButtonClick"?: (event: ButtonComponentCustomEvent<void>) => void;
+        /**
+          * The button size
+          * @default 'medium'
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The button variant style
+          * @default 'primary'
+         */
+        "variant"?: 'primary' | 'secondary' | 'danger' | 'success';
+    }
+    interface CounterComponent {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +129,8 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "button-component": ButtonComponent;
+        "counter-component": CounterComponent;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +138,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "button-component": LocalJSX.ButtonComponent & JSXBase.HTMLAttributes<HTMLButtonComponentElement>;
+            "counter-component": LocalJSX.CounterComponent & JSXBase.HTMLAttributes<HTMLCounterComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

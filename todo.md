@@ -1,5 +1,5 @@
-- init a stencil v4 project called `demo-v-9`
-- add storybook 9 to `demo-v-9`
+- ~~init a stencil v4 project called `demo-v-9`~~
+- ~~add storybook 9 to `demo-v-9`~~
 - init a stencil v4 project called `demo-v-10`
 - add storybook 10 to `demo-v-10`
 - add a locally packaged version of the library inside `/stencil-storybook`

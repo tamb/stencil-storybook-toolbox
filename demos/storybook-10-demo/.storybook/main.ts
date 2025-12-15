@@ -1,11 +1,11 @@
 /**
- * Storybook 9 configuration using storybook-addon-stenciljs
+ * Storybook 10 configuration using storybook-addon-stenciljs
  *
- * This file configures Storybook 9 with the Stencil integration.
+ * This file configures Storybook 10 with the Stencil integration.
  */
 
 import type { StorybookConfig } from '@storybook/html-vite';
-import { useStencilVite, useStencilAddon } from 'storybook-addon-stenciljs/v9';
+import { useStencilVite, useStencilAddon } from 'storybook-addon-stenciljs/v10';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -28,3 +28,4 @@ const config: StorybookConfig = {
 };
 
 export default config;
+

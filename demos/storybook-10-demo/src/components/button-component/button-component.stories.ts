@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/html';
 
-const meta: Meta = {
+type ButtonArgs = {
+  label?: string;
+  variant?: 'primary' | 'secondary' | 'danger' | 'success';
+  size?: 'small' | 'medium' | 'large';
+  disabled?: boolean;
+};
+
+const meta: Meta<ButtonArgs> = {
   title: 'Components/Button',
   tags: ['autodocs'],
   parameters: {
@@ -33,7 +40,7 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<ButtonArgs>;
 
 export const Default: Story = {
   args: {

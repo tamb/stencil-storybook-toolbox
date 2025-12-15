@@ -84,7 +84,6 @@ import { useStencilVite } from 'storybook-addon-stenciljs/v9';
 
 export default {
   viteFinal: useStencilVite(undefined, {
-    clearCache: true, // Automatically clears cache before starting
     packageName: 'my-stencil-components',
   }),
 };
@@ -144,6 +143,33 @@ export default {
 };
 ```
 
+### npm scripts
+```json
+// package.json 
+"scripts": {
+  // default stencil scripts
+  "dev": "npx concurrently \"npm run build:watch\" \"npm run storybook\"",
+  "build": "stencil build",
+  "build:watch": "stencil build --watch",
+  "storybook": "storybook dev -p 6006"
+}
+```
+
+**NOTE:** 
+Before first run you must run `npm run build` to create a cache for stencil.
+
+### tsconfig.json
+```json
+"compilerOptions": {
+  //options
+  "exclude": [
+    "node_modules",
+    "**/*.stories.ts", // added
+    ".storybook" //added
+  ]
+}
+```
+
 ## Configuration Options
 
 The `useStencilVite()` function accepts an optional options object with the following properties:
@@ -157,7 +183,7 @@ The `useStencilVite()` function accepts an optional options object with the foll
 | `cacheDir` | `string` | `node_modules/.vite-storybook` | Custom cache directory path |
 | `disableCache` | `boolean` | `true` | Disable browser caching of Stencil artifacts |
 | `optimizeDepsForce` | `boolean` | `true` | Force Vite to always optimize dependencies |
-| `clearCache` | `boolean` | `false` | Automatically clear cache directories before starting |
+| `clearCache` (WIP) | `boolean` | `false` | Automatically clear cache directories before starting |
 | `cacheDirs` | `string[]` | `['node_modules/.vite-storybook', '.storybook-cache']` | Custom cache directories to clear when `clearCache` is true. Paths are resolved relative to `process.cwd()` |
 
 ## Default Behavior

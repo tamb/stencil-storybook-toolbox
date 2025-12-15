@@ -13,6 +13,7 @@
     "target": "es2022",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "skipLibCheck": true,
     "jsx": "react",
     "jsxFactory": "h",
     "jsxFragmentFactory": "h.Fragment"
@@ -21,6 +22,8 @@
     "src"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/*.stories.ts",
+    ".storybook"
   ]
 }
